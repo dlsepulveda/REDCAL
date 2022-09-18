@@ -13,6 +13,11 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/shared/sharedComponents.module';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [
@@ -33,6 +38,10 @@ import { RegisterComponent } from './auth/register/register.component';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

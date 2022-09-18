@@ -1,18 +1,26 @@
-<div class="login" fxFill>
-    <form class="custom-form">
-      <h1>Login</h1>
-      <input
-        type="email"
-        name="email"
-        placeholder="Correo electrónico"
-        required="required"
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Contraseña"
-        required="required"
-      />
-      <button type="submit" (click)="login()">Log in</button>
-    </form>
+<div fxLayoutAlign="center stretch">
+<form class="custom-form" [formGroup]="form" fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-form-field class="form-control" fxFlex="100">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" type="text" required />
+    <mat-error *ngIf="this.form.get('email')?.hasError('required')">
+      Email is required
+    </mat-error>
+    <mat-error *ngIf="this.form.get('email')?.hasError('email')">
+      Email isn't valid. Please enter a valid email.
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="form-control" fxFlex="100">
+    <mat-label>Password</mat-label>
+    <input matInput formControlName="password" type="password" required />
+    <mat-error *ngIf="this.form.get('password')?.hasError('required')">
+      Password is required
+    </mat-error>
+  </mat-form-field>
+  <div class="form-footer" fxFlex="100" fxLayoutAlign="center center">
+    <button [disabled]="form.invalid || loading"  mat-raised-button color="primary" type="submit" (click)="login()">
+      Enviar
+    </button>
   </div>
+</form>
+</div>
