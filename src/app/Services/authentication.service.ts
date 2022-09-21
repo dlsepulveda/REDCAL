@@ -61,7 +61,7 @@ export class AuthenticationService {
     const decoded = jwtDecode<any>(
       myStorage.getItem('RedcalAccessToken')
     )
-    const response:any = this.firebase.getUser(decoded.sub).subscribe(res=>{
+    const response:any = this.firebase.getUser('user',decoded.sub).subscribe(res=>{
         this.response = !!(decoded && rol.some((element)=> element = res[0].roles));
         return response;
         })

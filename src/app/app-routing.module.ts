@@ -14,7 +14,12 @@ const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent, data: { role: ['user','admin'] }, canActivate: [GuardGuard] },
+  {
+    path: 'home',
+    component: HomeComponent,
+    data: { role: ['user', 'admin'] },
+    //canActivate: [GuardGuard],
+  },
   {
     path: '',
     redirectTo: '/home',

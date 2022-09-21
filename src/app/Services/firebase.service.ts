@@ -18,8 +18,8 @@ export class FirebaseService {
     return this.userCollection.add({ ...user });
   }
 
-  getUser(uid:string): Observable<any>{
-    return this.db.collection("user", ref => ref.where("uid", "==", uid)).valueChanges();
+  getUser(colletion:string ,uid:string): Observable<any>{
+    return this.db.collection(colletion, ref => ref.where("uid", "==", uid)).valueChanges();
   }
 
 }
