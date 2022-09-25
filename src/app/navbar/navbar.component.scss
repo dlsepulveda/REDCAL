@@ -1,10 +1,20 @@
- 
-@import '../../myColor.scss';
+@import "../../myColor.scss";
 
-.container{
-    color:black;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 16px;
-    font-weight: 500px; 
+.container {
+  color: black;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 16px;
+  font-weight: 500px;
+
+  ::ng-deep .mat-divider-inset{
+    margin-left: 2px;
+  }
 }
+
+.container-button {
+    button {
+      color: #7d1838;
+    }
+  }
+  

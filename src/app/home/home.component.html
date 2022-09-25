@@ -11,16 +11,23 @@
     <div></div>
   </div>
 </section>
-<section fxLayout="column">
-  <div fxLayout="row" fxLayoutGap="20">
-    <div fxFlex="50">
+
+<!-- Quienes somos -->
+<section fxLayout="column" id="barra_iconos">
+  <div fxLayout="row" fxLayoutGap="20" fxLayout.xs="column" fxLayoutGap.xs="10">
+    <div fxFlex="50" fxFlex.xs="100">
       <img
-        src="https://firebasestorage.googleapis.com/v0/b/redcal-8c1d7.appspot.com/o/quienes%20somos.jpg?alt=media&token=5818fbd0-be52-4933-94f8-bb93283bc176"
+        src="https://firebasestorage.googleapis.com/v0/b/redcal-8c1d7.appspot.com/o/quienes%20somos.jpg?alt=media&token=d40889d5-a434-477e-9af9-9301d3ec7c35"
         alt=""
         width="100%"
       />
     </div>
-    <div fxFlex="50" fxLayoutAlign="center center" fxLayout="column">
+    <div
+      fxFlex="50"
+      fxFlex.xs="100"
+      fxLayoutAlign="center center"
+      fxLayout="column"
+    >
       <h1>¿Quienes Somos?</h1>
       <div>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur,
@@ -44,8 +51,14 @@
       </div>
     </div>
   </div>
-  <div fxLayout="row" fxLayoutGap="20">
-    <div fxFlex="50" fxLayoutAlign="center center" fxLayout="column">
+  <div fxLayout="row" fxLayoutGap="20" fxLayout.xs="column" fxLayoutGap.xs="10">
+    <div
+      fxFlex="50"
+      fxFlex.xs="100"
+      fxLayoutAlign="center center"
+      fxLayout="column"
+      fxFlexOrder.xs="2"
+    >
       <h1>Misión</h1>
       <div>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur,
@@ -54,7 +67,7 @@
         rerum deserunt?
       </div>
     </div>
-    <div fxFlex="50">
+    <div fxFlex="50" fxFlex.xs="100">
       <img
         src="https://firebasestorage.googleapis.com/v0/b/redcal-8c1d7.appspot.com/o/misi%C3%B3n.jpg?alt=media&token=e8355509-77bb-4a48-89d8-325e604d5971"
         alt=""
@@ -62,15 +75,20 @@
       />
     </div>
   </div>
-  <div fxLayout="row" fxLayoutGap="20">
-    <div fxFlex="50">
+  <div fxLayout="row" fxLayoutGap="20" fxLayout.xs="column" fxLayoutGap.xs="10">
+    <div fxFlex="50" fxFlex.xs="100">
       <img
         src="https://firebasestorage.googleapis.com/v0/b/redcal-8c1d7.appspot.com/o/visi%C3%B3n.jpg?alt=media&token=75919ff1-277b-4109-9245-813388b54199"
         alt=""
         width="100%"
       />
     </div>
-    <div fxFlex="50" fxLayoutAlign="center center" fxLayout="column">
+    <div
+      fxFlex="50"
+      fxFlex.xs="100"
+      fxLayoutAlign="center center"
+      fxLayout="column"
+    >
       <h1>Visión</h1>
       <div>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur,
@@ -93,5 +111,102 @@
         ipsa, dolore quos.
       </div>
     </div>
+  </div>
+  <div mat-card-avatar>adsac</div>
+</section>
+
+<!-- Servicios -->
+<section class="servicios">
+  <div fxLayout="column" fxLayoutGap="15" fxLayoutAlign="center center">
+    <h1>SERVICIOS</h1>
+    <mat-card>
+      <mat-card-content>
+        <div
+          fxLayout="row"
+          fxLayoutGap="10"
+          fxLayoutAlign="space-around center"
+          fxLayout.xs="column"
+        >
+          <div fxFlex="25" fxFlex.xs="100">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/redcal-8c1d7.appspot.com/o/misi%C3%B3n.jpg?alt=media&token=e8355509-77bb-4a48-89d8-325e604d5971"
+              alt="imagen de servicio"
+              width="100%"
+            />
+          </div>
+          <div
+            fxFlex="65"
+            fxLayout="column"
+            fxFlex.xs="100"
+            fxLayoutAlign="center center"
+          >
+            <h1>titulo</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
+              voluptates incidunt commodi nisi, impedit possimus sed, aut dicta
+              delectus consectetur modi sint soluta molestiae, debitis libero
+              consequatur quos recusandae iusto!
+            </p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <!-- <mat-divider></mat-divider> -->
+    <div
+      fxLayout="row"
+      fxFlex="100"
+      fxLayoutGap="10"
+      fxLayoutAlign="space-around center"
+      fxLayout.xs="column"
+    >
+      <div fxFlex="25" fxFlex.xs="100">
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/redcal-8c1d7.appspot.com/o/misi%C3%B3n.jpg?alt=media&token=e8355509-77bb-4a48-89d8-325e604d5971"
+          alt="imagen de servicio"
+          width="100%"
+        />
+      </div>
+      <div
+        fxFlex="65"
+        fxLayout="column"
+        fxFlex.xs="100"
+        fxLayoutAlign="center center"
+      >
+        <h1>titulo</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
+          voluptates incidunt commodi nisi, impedit possimus sed, aut dicta
+          delectus consectetur modi sint soluta molestiae, debitis libero
+          consequatur quos recusandae iusto!
+        </p>
+      </div>
+    </div>
+    <!-- <mat-divider [inset]="true" fxFlex="100"></mat-divider> -->
+  </div>
+</section>
+
+<!-- formulario -->
+<section class="formulario">
+  <div fxLayoutAlign="center center" fxFill fxLayout="column">
+    <h1>CONTACTA CON NOSOTROS</h1>
+    <mat-form-field appearance="outline">
+      <mat-label>Outline form field</mat-label>
+      <input matInput placeholder="Placeholder" />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Outline form field</mat-label>
+      <input matInput placeholder="Placeholder" />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Outline form field</mat-label>
+      <input matInput placeholder="Placeholder" />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Textarea</mat-label>
+      <textarea matInput></textarea>
+    </mat-form-field>
   </div>
 </section>

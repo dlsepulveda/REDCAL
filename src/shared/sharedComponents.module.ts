@@ -11,6 +11,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [],
@@ -26,6 +27,7 @@ import {MatMenuModule} from '@angular/material/menu';
     MatFormFieldModule,
     MatCardModule,
     MatMenuModule,
+    MatDividerModule,
   ],
   exports: [
     MatSliderModule,
@@ -37,7 +39,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatSidenavModule,
     MatFormFieldModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDividerModule
 
   ]
 })

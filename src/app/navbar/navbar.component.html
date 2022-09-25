@@ -13,23 +13,24 @@
       <img
         src="https://firebasestorage.googleapis.com/v0/b/redcal-8c1d7.appspot.com/o/Logo.jfif?alt=media&token=19ce4a2d-225d-4862-9dce-8b5fae6274ae"
         class="logo"
-        width.xs="400"
-        height="80">
-      
+        width.xs="100%"
+        height="80"
+      />
     </div>
-    <div fxLayoutAlign="center center" fxLayoutGap="10">
+    <!-- <mat-divider [vertical]="true" [inset]="true" style="height:50px;"></mat-divider> -->
+    <div fxLayoutAlign="center center">
       <div>
         <button
           mat-icon-button
-          color="primary"
+          color="warn"
           aria-label="Example icon button with a home icon"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
             y="0px"
-            width="32"
-            height="32"
+            width="20"
+            height="20"
             viewBox="0 0 48 48"
             style="fill: #000000"
           >
@@ -110,8 +111,8 @@
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
             y="0px"
-            width="32"
-            height="32"
+            width="20"
+            height="20"
             viewBox="0 0 48 48"
             style="fill: #000000"
           >
@@ -134,31 +135,37 @@
           </svg>
         </button>
       </div>
-      <div fxLayoutGap="10">
-        <button routerLink="auth/login" mat-raised-button color="primary">
-          Iniciar Sesión
-        </button>
-        <button routerLink="auth/register" mat-raised-button color="primary">
-          Registrarse
-        </button>
+      <mat-divider [vertical]="true" [inset]="true" style="height:50px;"></mat-divider>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="center center"
+        fxFlex="100"
+        class="container-button"
+      >
+        <div fxLayout="row wrap">
+          <button routerLink="/" mat-button>INICIO</button>
+          <button mat-button href="#barra_iconos">QUIENES SOMOS</button>
+          <button mat-button>SERVICIOS</button>
+          <button mat-button>CAPACITACIONES</button>
+          <button mat-button>NORMATIVIDAD</button>
+          <button mat-button>COMITES</button>
+          <button mat-button>CONTACTANOS</button>
+        </div>
       </div>
-    </div>
-  </div>
-  <div
-    fxLayout="row"
-    fxLayoutAlign="center center"
-    fxFlex="100"
-    class="container"
-  >
-    <div fxLayout="row wrap">
-      <button routerLink="/" mat-button>Home</button>
-      <button mat-button>Quíenes Somos</button>
-      <button mat-button>Normatividad</button>
-      <button mat-button>Eventos</button>
-      <button mat-button>Trámites</button>
-      <button mat-button>Productos y Servicios</button>
-      <button mat-button>Aliados y Convenios</button>
-      <button mat-button>Comités</button>
+      <mat-divider [vertical]="true" [inset]="true" style="height:50px;"></mat-divider>
+      <div fxLayout="column">
+        <button mat-icon-button [matMenuTriggerFor]="menu" color="warn">
+          <mat-icon> person</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" fxLayout="row wrap">
+          <button routerLink="auth/login" mat-menu-item color="primary">
+            Iniciar Sesión
+          </button>
+          <button routerLink="auth/register" mat-menu-item color="primary">
+            Registrarse
+          </button>
+        </mat-menu>
+      </div>
     </div>
   </div>
 </div>
