@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
 
     this.services
       .login(this.form.value)
-      .then(() => ((this.loading = false), this.router.navigate(['/home'])));
+      .then(() => ((this.loading = false), this.router.navigate(['/home'])))
+      .catch((err) => {err});
   }
 }

@@ -19,4 +19,11 @@ export interface service{
     detail: string;
 }
 
+export interface IUserData{
+    roles:string,
+    name: string,
+    email:string,
+    lastName: string,
+    uid: string,
+}
 

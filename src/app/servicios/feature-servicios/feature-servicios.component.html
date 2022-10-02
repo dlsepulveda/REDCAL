@@ -1,6 +1,6 @@
 <div fxLayout="column" fxLayoutGap="30" fxLayoutAlign="center center">
   <h1>SERVICIOS</h1>
-  <div fxLayoutAlign="end center" fxLayoutGap="20px" class="buttons">
+  <div fxLayoutAlign="end center" fxLayoutGap="20px" class="buttons" *ngIf="cuenta[0]?.roles === 'admin'">
     <button mat-raised-button color="primary" (click)="openModal()">
       Agregar Servicio
     </button>

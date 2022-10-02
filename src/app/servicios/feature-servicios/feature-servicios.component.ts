@@ -5,6 +5,7 @@ import { UploadServiceComponent } from '../ui/upload-service/upload-service.comp
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { AuthenticationService } from 'src/app/Services/authentication.service';
 
 @Component({
   selector: 'app-feature-servicios',
@@ -15,13 +16,16 @@ export class FeatureServiciosComponent implements OnInit {
   uploadPercent!: any;
   urlImage!: any;
   servicesItem: any;
+  cuenta:any;
   constructor(
     private dialog: MatDialog,
     private storage: AngularFireStorage,
-    private FirebaseService: FirebaseService
+    private FirebaseService: FirebaseService,
+    private authService: AuthenticationService,
   ) {}
 
   ngOnInit(): void {
+    this.cuenta = this.authService.currentUserValue.value;
     this.FirebaseService.getAllServices().subscribe(res=>{
       this.servicesItem = res;
     })
