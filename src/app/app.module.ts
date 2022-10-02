@@ -18,6 +18,12 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
+import { FeatureServiciosComponent } from './servicios/feature-servicios/feature-servicios.component';
+import { FeatureCapacitacionComponent } from './capacitaciones/feature-capacitacion/feature-capacitacion.component';
+import { FeatureSomosComponent } from './quienes-somos/feature-somos/feature-somos.component';
+import { UploadServiceComponent } from './servicios/ui/upload-service/upload-service.component';
+import { FirebaseService } from './Services/firebase.service';
+import { AuthenticationService } from './Services/authentication.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +32,11 @@ import { AngularFireModule } from '@angular/fire/compat';
     NavbarComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    FeatureServiciosComponent,
+    FeatureCapacitacionComponent,
+    FeatureSomosComponent,
+    UploadServiceComponent
   ],
   imports: [
     BrowserModule,
@@ -39,11 +49,11 @@ import { AngularFireModule } from '@angular/fire/compat';
     FormsModule,
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
     AngularFireModule.initializeApp(environment.firebase),
+    provideAuth(() => getAuth()),
     AngularFirestoreModule, 
   ],
-  providers: [],
+  providers: [FirebaseService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

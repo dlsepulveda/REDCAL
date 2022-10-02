@@ -144,9 +144,9 @@
       >
         <div fxLayout="row wrap">
           <button routerLink="/" mat-button>INICIO</button>
-          <button mat-button href="#barra_iconos">QUIENES SOMOS</button>
-          <button mat-button>SERVICIOS</button>
-          <button mat-button>CAPACITACIONES</button>
+          <button mat-button routerLink="/quienes-somos">QUIENES SOMOS</button>
+          <button mat-button routerLink="/servicios">SERVICIOS</button>
+          <button mat-button routerLink="/capacitaciones">CAPACITACIONES</button>
           <button mat-button>NORMATIVIDAD</button>
           <button mat-button>COMITES</button>
           <button mat-button>CONTACTANOS</button>
@@ -158,10 +158,10 @@
           <mat-icon> person</mat-icon>
         </button>
         <mat-menu #menu="matMenu" fxLayout="row wrap">
-          <button routerLink="auth/login" mat-menu-item color="primary">
+          <button routerLink="auth/login" mat-menu-item >
             Iniciar Sesión
           </button>
-          <button routerLink="auth/register" mat-menu-item color="primary">
+          <button routerLink="auth/register" mat-menu-item >
             Registrarse
           </button>
         </mat-menu>

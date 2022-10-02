@@ -12,6 +12,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCardModule} from '@angular/material/card';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [],
@@ -28,6 +29,7 @@ import {MatDividerModule} from '@angular/material/divider';
     MatCardModule,
     MatMenuModule,
     MatDividerModule,
+    MatDialogModule,
   ],
   exports: [
     MatSliderModule,
@@ -40,7 +42,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatFormFieldModule,
     MatCardModule,
     MatMenuModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDialogModule,
 
   ]
 })

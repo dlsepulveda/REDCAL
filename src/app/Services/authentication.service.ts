@@ -34,13 +34,15 @@ export class AuthenticationService {
     });
   }
 
-  register({ email, password }: user) {
+  register({ email, password, name, lastName }: user) {
     return createUserWithEmailAndPassword(this.auth, email, password).then(
       () => {
         onAuthStateChanged(getAuth(), (user) => {
           if (user) {
             const User:userdb = {
               email: email,
+              name: name,
+              lastName: lastName,
               roles: 'user',
               uid: user.uid
             }
