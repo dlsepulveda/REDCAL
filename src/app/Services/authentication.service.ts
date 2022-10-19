@@ -14,6 +14,7 @@ import {
   getAuth,
   getIdToken,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   setPersistence,
 } from 'firebase/auth';
 import { FirebaseService } from './firebase.service';
@@ -63,6 +64,13 @@ export class AuthenticationService {
 
   get currentUserValue() {
     return this.currentUserSubject;
+  }
+
+  forgotPassword(emailAddress:string){
+    return sendPasswordResetEmail(this.auth, emailAddress).then(function() { 
+      // Correo electrónico enviado. 
+      return 'Revise su correo electronico y siga los pasos.'; 
+    });
   }
 
   register({ email, password, name, lastName }: user) {

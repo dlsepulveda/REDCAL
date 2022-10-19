@@ -9,18 +9,17 @@ import { AuthenticationService } from '../Services/authentication.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  authentication: BehaviorSubject<boolean>;
   constructor(private authService: AuthenticationService, private router:Router) {
-    this.authentication = new BehaviorSubject<boolean>(false);
   }
 
   ngOnInit(): void {
-    this.authentication.next(this.authService.isAuthenticated());
-    console.log(this.authentication.value)
+    
   }
 
   singOut(){
-    this.authService.logout();
-    this.router.navigate(['auth/login']);
+    this.authService.logout().then(res=>{
+      this.router.navigate(['auth/login']);
+    });
+    
   }
 }

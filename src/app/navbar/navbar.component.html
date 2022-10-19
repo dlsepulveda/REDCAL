@@ -158,13 +158,13 @@
           <mat-icon> person</mat-icon>
         </button>
         <mat-menu #menu="matMenu" fxLayout="row wrap">
-          <button routerLink="auth/login" mat-menu-item  [fxHide]="authentication.value">
+          <button routerLink="auth/login" mat-menu-item >
             Iniciar Sesión
           </button>
-          <button routerLink="auth/register" mat-menu-item  [fxHide]="authentication.value">
+          <button routerLink="auth/register" mat-menu-item  >
             Registrarse
           </button>
-          <button (click)="singOut()" mat-menu-item [fxHide]="!authentication.value">
+          <button (click)="singOut()" mat-menu-item >
             Cerrar Sesión
           </button>
         </mat-menu>
