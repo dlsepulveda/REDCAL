@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { IUserData, userdb } from './../core/entity/user/user.module';
 import { Injectable } from '@angular/core';
 import {
@@ -29,7 +30,7 @@ export class AuthenticationService {
   currentUserSubject: BehaviorSubject<IUserData>;
   userData: IUserData;
 
-  constructor(private auth: Auth, private firebase: FirebaseService) {
+  constructor(private auth: Auth, private firebase: FirebaseService, private router: Router) {
     this.response = false;
     this.userData = {
       name: '',
@@ -52,6 +53,7 @@ export class AuthenticationService {
             );
             this.firebase.getUser('user', decoded.sub).subscribe((res) => {
               this.currentUserSubject.next(res);
+              this.router.navigate(['/home']);
             });
           }
         });

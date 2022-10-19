@@ -1,26 +1,49 @@
 <div fxLayoutAlign="center stretch">
-<form class="custom-form" [formGroup]="form" fxLayout="row wrap" fxLayoutAlign="center center">
-  <mat-form-field class="form-control" fxFlex="100">
-    <mat-label>Email</mat-label>
-    <input matInput formControlName="email" type="text" required />
-    <mat-error *ngIf="this.form.get('email')?.hasError('required')">
-      Email is required
-    </mat-error>
-    <mat-error *ngIf="this.form.get('email')?.hasError('email')">
-      Email isn't valid. Please enter a valid email.
-    </mat-error>
-  </mat-form-field>
-  <mat-form-field class="form-control" fxFlex="100">
-    <mat-label>Password</mat-label>
-    <input matInput formControlName="password" type="password" required />
-    <mat-error *ngIf="this.form.get('password')?.hasError('required')">
-      Password is required
-    </mat-error>
-  </mat-form-field>
-  <div class="form-footer" fxFlex="100" fxLayoutAlign="center center">
-    <button [disabled]="form.invalid || loading"  mat-raised-button color="primary" type="submit" (click)="login()">
-      Enviar
-    </button>
-  </div>
-</form>
+  <form
+    class="custom-form"
+    [formGroup]="form"
+    fxLayout="row wrap"
+    fxLayoutAlign="center center"
+  >
+    <mat-form-field class="form-control" fxFlex="100">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="text" required />
+      <mat-error *ngIf="this.form.get('email')?.hasError('required')">
+        Email is required
+      </mat-error>
+      <mat-error *ngIf="this.form.get('email')?.hasError('email')">
+        Email isn't valid. Please enter a valid email.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-control" fxFlex="100">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password" required />
+      <mat-error *ngIf="this.form.get('password')?.hasError('required')">
+        Password is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- seccion de errores -->
+    <div
+      *ngIf="!!error_message"
+      class="alert-danger"
+      fxLayout="row"
+      fxLayoutAlign="center center"
+    >
+      <mat-icon aria-hidden="false" class="icon-warning">warning</mat-icon>
+      {{ error_message }}
+    </div>
+
+    <div class="form-footer" fxFlex="100" fxLayoutAlign="center center">
+      <button
+        [disabled]="form.invalid || loading"
+        mat-raised-button
+        color="primary"
+        type="submit"
+        (click)="login()"
+      >
+        Enviar
+      </button>
+    </div>
+  </form>
 </div>
