@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -12,24 +11,92 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$REDCAL-primary: mat.define-palette(mat.$indigo-palette);
-$REDCAL-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+// $ejemplo: (
+//   "50": lighten($color, 52%),
+//   "100": lighten($color, 37%),
+//   "200": lighten($color, 26%),
+//   "300": lighten($color, 12%),
+//   "400": lighten($color, 6%),
+//   "500": $color,
+//   "600": darken($color, 6%),
+//   "700": darken($color, 12%),
+//   "800": darken($color, 18%),
+//   "900": darken($color, 24%),
+//   "A100": lighten(saturate($color, 30%), 50%),
+//   "A200": lighten(saturate($color, 30%), 30%),
+//   "A400": lighten(saturate($color, 15%), 10%),
+//   "A700": lighten(saturate($color, 5%), 5%),
+// );
+
+$REDCAL-color-primary: (
+  900: #bf361d,
+  800: #d84326,
+  700: #e6492a,
+  600: #f5502f,
+  500: #ff5633,
+  400: #ff6f4f,
+  300: #fe8a6e,
+  200: #feab97,
+  100: #feccc0,
+  50: #fae9e8,
+  contrast: (
+    900: #ffffff,
+    800: #ffffff,
+    700: #ffffff,
+    600: #ffffff,
+    500: #ffffff,
+    400: #ffffff,
+    300: #ffffff,
+    200: #ffffff,
+    100: #ffffff,
+    50: #ffffff,
+  ),
+);
+
+$REDCAL-color-secondary: (
+  900: #ee7900,
+  800: #f1a300,
+  700: #f2bb10,
+  600: #f3d31c,
+  500: #f2e522,
+  400: #f5ea4a,
+  300: #f6ed6c,
+  200: #f9f297,
+  100: #fbf7c0,
+  50: #fdfce6,
+  contrast: (
+    900: #000000,
+    800: #000000,
+    700: #000000,
+    600: #000000,
+    500: #000000,
+    400: #000000,
+    300: #000000,
+    200: #000000,
+    100: #000000,
+    50: #000000,
+  ),
+);
+
+$REDCAL-primary: mat.define-palette($REDCAL-color-primary, 900);
+$REDCAL-accent: mat.define-palette($REDCAL-color-secondary, 400);
 
 // The warn palette is optional (defaults to red).
-$REDCAL-warn: mat.define-palette(mat.$red-palette);
+$REDCAL-warn: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$REDCAL-theme: mat.define-light-theme((
-  color: (
-    primary: $REDCAL-primary,
-    accent: $REDCAL-accent,
-    warn: $REDCAL-warn,
+$REDCAL-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $REDCAL-primary,
+      accent: $REDCAL-accent,
+      warn: $REDCAL-warn,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($REDCAL-theme);
-

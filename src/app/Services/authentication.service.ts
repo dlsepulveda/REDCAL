@@ -8,7 +8,13 @@ import {
   signOut,
 } from '@angular/fire/auth';
 import { user } from '../core/entity/user/user.module';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import {
+  browserSessionPersistence,
+  getAuth,
+  getIdToken,
+  onAuthStateChanged,
+  setPersistence,
+} from 'firebase/auth';
 import { FirebaseService } from './firebase.service';
 import { myStorage } from '../auth/my-storage/my-storage.module';
 import jwtDecode from 'jwt-decode';
@@ -18,6 +24,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthenticationService {
+  getauth = getAuth();
   response: boolean;
   currentUserSubject: BehaviorSubject<IUserData>;
   userData: IUserData;
@@ -35,15 +42,19 @@ export class AuthenticationService {
   }
 
   login({ email, password }: user) {
-    return signInWithEmailAndPassword(this.auth, email, password).then(() => {
-      onAuthStateChanged(getAuth(), (user: any) => {
-        if (user) {
-          myStorage.setItem('RedcalAccessToken', user['accessToken']);
-          const decoded = jwtDecode<any>(myStorage.getItem('RedcalAccessToken'));
-          this.firebase.getUser('user', decoded.sub).subscribe(res => {
-            this.currentUserSubject.next(res);
-          })
-        }
+    return setPersistence(this.getauth, browserSessionPersistence).then(() => {
+      return signInWithEmailAndPassword(this.auth, email, password).then(() => {
+        onAuthStateChanged(getAuth(), (user: any) => {
+          if (user) {
+            myStorage.setItem('RedcalAccessToken', user['accessToken']);
+            const decoded = jwtDecode<any>(
+              myStorage.getItem('RedcalAccessToken')
+            );
+            this.firebase.getUser('user', decoded.sub).subscribe((res) => {
+              this.currentUserSubject.next(res);
+            });
+          }
+        });
       });
     });
   }
@@ -75,6 +86,7 @@ export class AuthenticationService {
     myStorage.clear();
     return signOut(this.auth);
   }
+
 
   hasRoles(rol: string[]): boolean {
     if (!myStorage || !myStorage.getItem('RedcalAccessToken')) {
