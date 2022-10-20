@@ -15,20 +15,26 @@ import { AuthenticationService } from 'src/app/Services/authentication.service';
 export class FeatureServiciosComponent implements OnInit {
   uploadPercent!: any;
   urlImage!: any;
-  servicesItem: any;
-  cuenta:any;
+  servicesItem: any[] = [];
+  cuenta: any;
   constructor(
     private dialog: MatDialog,
     private storage: AngularFireStorage,
     private FirebaseService: FirebaseService,
-    private authService: AuthenticationService,
+    private authService: AuthenticationService
   ) {}
 
   ngOnInit(): void {
     this.cuenta = this.authService.currentUserValue.value;
-    this.FirebaseService.getAllServices().subscribe(res=>{
-      this.servicesItem = res;
-    })
+    this.FirebaseService.getAllServices().subscribe((res) => {
+      const data = {
+        urlImage: res[0].payload.doc.data().urlImage,
+        title: res[0].payload.doc.data().title,
+        detail: res[0].payload.doc.data().detail,
+        uid: res[0].payload.doc.id
+      };
+      this.servicesItem.push(data);
+    });
   }
 
   openModal() {
@@ -62,6 +68,7 @@ export class FeatureServiciosComponent implements OnInit {
                   urlImage: x,
                   title: datos.title,
                   detail: datos.details,
+                  uid: '',
                 };
                 return FirebaseService.createService(data)
                   .then(() => {
@@ -76,5 +83,12 @@ export class FeatureServiciosComponent implements OnInit {
         )
         .subscribe();
     };
+  }
+
+  remove() {
+    //throw new Error('Method not implemented.');
+  }
+  editar() {
+    //throw new Error('Method not implemented.');
   }
 }

@@ -94,6 +94,14 @@ export class AuthenticationService {
 
   logout() {
     myStorage.clear();
+    const userData = {
+      name: '',
+      email: '',
+      uid: '',
+      roles: '',
+      lastName: '',
+    };
+    this.currentUserSubject.next(userData);
     return signOut(this.auth);
   }
 

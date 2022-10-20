@@ -1,4 +1,4 @@
-import {  collection, query, where } from "firebase/firestore";
+import {  collection, deleteDoc, doc, query, updateDoc, where } from "firebase/firestore";
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { service, userdb } from '../core/entity/user/user.module';
@@ -27,8 +27,20 @@ export class FirebaseService {
     return this.serviceCollection.add({ ...service });
   }
 
+  updateService(service:service){
+    return this.db.collection("usuarios").doc(service.uid).update({
+      title: service.title,
+      detail: service.detail,
+      urlImage: service.urlImage,
+    });
+  }
+
+  delete(id: string) {
+    return this.db.collection("usuarios").doc(id).delete();
+  }
+
   getAllServices(){
-    return this.serviceCollection.valueChanges();
+    return this.serviceCollection.snapshotChanges().pipe();
   }
 
 }

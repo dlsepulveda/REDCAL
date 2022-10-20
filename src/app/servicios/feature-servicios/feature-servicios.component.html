@@ -28,6 +28,10 @@
               {{ item.detail }}
             </p>
           </div>
+          <div fxLayout="column" fxLayout.xs="row" fxLayoutGap="20" *ngIf="cuenta[0]?.roles === 'admin'">
+            <button mat-icon-button (click)="editar()"><mat-icon color="primary">delete_forever</mat-icon></button>
+            <button mat-icon-button (click)="remove()"><mat-icon color="accent">edit</mat-icon></button>
+          </div>
         </div>
       </mat-card-content>
     </mat-card>

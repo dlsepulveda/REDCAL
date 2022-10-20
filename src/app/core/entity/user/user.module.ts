@@ -17,6 +17,7 @@ export interface service{
     urlImage:string;
     title: string;
     detail: string;
+    uid: string;
 }
 
 export interface IUserData{
