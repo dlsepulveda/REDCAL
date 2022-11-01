@@ -4,7 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { UploadServiceComponent } from '../ui/upload-service/upload-service.component';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
 
 @Component({
@@ -27,13 +26,17 @@ export class FeatureServiciosComponent implements OnInit {
   ngOnInit(): void {
     this.cuenta = this.authService.currentUserValue.value;
     this.FirebaseService.getAllServices().subscribe((res) => {
-      const data = {
-        urlImage: res[0].payload.doc.data().urlImage,
-        title: res[0].payload.doc.data().title,
-        detail: res[0].payload.doc.data().detail,
-        uid: res[0].payload.doc.id
-      };
-      this.servicesItem.push(data);
+      if(res){
+        res.map(item=>{
+          const data = {
+            urlImage: item?.payload.doc.data().urlImage,
+            title: item?.payload.doc.data().title,
+            detail: item?.payload.doc.data().detail,
+            uid: item?.payload.doc.id
+          };
+          this.servicesItem.push(data);
+        })
+      }
     });
   }
 

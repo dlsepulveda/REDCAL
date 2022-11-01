@@ -24,6 +24,7 @@ import { FeatureSomosComponent } from './quienes-somos/feature-somos/feature-som
 import { UploadServiceComponent } from './servicios/ui/upload-service/upload-service.component';
 import { FirebaseService } from './Services/firebase.service';
 import { AuthenticationService } from './Services/authentication.service';
+import { UploadCapacitacionComponent } from './capacitaciones/ui/upload-capacitacion/upload-capacitacion.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AuthenticationService } from './Services/authentication.service';
     FeatureServiciosComponent,
     FeatureCapacitacionComponent,
     FeatureSomosComponent,
-    UploadServiceComponent
+    UploadServiceComponent,
+    UploadCapacitacionComponent
   ],
   imports: [
     BrowserModule,

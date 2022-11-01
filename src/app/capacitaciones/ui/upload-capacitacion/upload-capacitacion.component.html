@@ -1,0 +1,52 @@
+<div fxLayout="column" fxFill fxLayoutAlign="center center" fxLayoutGap="20">
+  <div fxLayout="row">AGREGAR NUEVO SERVICIO</div>
+  <form [formGroup]="formulario" fxLayout="column" fxLayoutGap="10">
+    <mat-form-field appearance="outline">
+      <mat-label>Outline form field</mat-label>
+      <input
+        matInput
+        placeholder="Ingrese nombre del servicio"
+        formControlName="title"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Outline form field</mat-label>
+
+      <textarea
+        matInput
+        placeholder="Detalles del servicio"
+        formControlName="details"
+      ></textarea>
+    </mat-form-field>
+
+    <div fxLayout="column" fxLayoutGap="10">
+      <mat-label>Imagen:</mat-label>
+      <input
+        type="file"
+        accept="jpg, png, jpeg"
+        (change)="file($event)"
+        required
+      />
+    </div>
+
+    <div
+      fxFill
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      fxLayoutGap="20"
+      fxLayout.xs="column"
+    >
+      <button mat-raised-button mat-dialog-close="" color="accent">
+        cancelar
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="submit()"
+        [disabled]="loading || formulario.invalid"
+      >
+        Guardar
+      </button>
+    </div>
+  </form>
+</div>

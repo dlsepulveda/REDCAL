@@ -1,1 +1,83 @@
-<p>feature-capacitacion works!</p>
+<div fxLayout="column" fxLayoutGap="30" fxLayoutAlign="center center">
+  <h1>SERVICIOS</h1>
+  <div
+    fxLayoutAlign="end center"
+    fxLayoutGap="20px"
+    class="buttons"
+    *ngIf="cuenta[0]?.roles === 'admin'"
+  >
+    <button mat-raised-button color="primary" (click)="openModal()">
+      Agregar capacitación
+    </button>
+    <button mat-raised-button color="primary" (click)="openModalEvento()">
+      Agregar evento
+    </button>
+  </div>
+  <mat-progress-spinner
+    *ngIf="loading == false"
+    class="example-margin"
+    [color]="'primary'"
+    [mode]="'indeterminate'"
+    [value]="100"
+  >
+  </mat-progress-spinner>
+  <div fxLayout="row" fxLayoutAlign="space-between start" fxFill>
+    <div fxLayout="column" fxLayoutgap="15" style="min-width: 80%">
+      <div
+        *ngFor="let item of capacitacionItem"
+      >
+        <mat-card *ngIf="loading == true">
+          <mat-card-content>
+            <div
+              fxLayout="row"
+              fxLayoutGap="10"
+              fxLayoutAlign="space-around center"
+              fxLayout.xs="column"
+            >
+              <div fxFlex="40" fxFlex.xs="100">
+                <img
+                  [src]="item.urlImage"
+                  alt="imagen de servicio"
+                  width="100%"
+                />
+              </div>
+              <div
+                fxFlex="50"
+                fxLayout="column"
+                fxFlex.xs="100"
+                fxLayoutAlign="center center"
+              >
+                <h1>{{ item.title }}</h1>
+                <p>
+                  {{ item.detail }}
+                </p>
+              </div>
+              <div
+                fxLayout="column"
+                fxLayout.xs="row"
+                fxLayoutGap="20"
+                *ngIf="cuenta[0]?.roles === 'admin'"
+              >
+                <button mat-icon-button (click)="editar()">
+                  <mat-icon color="primary">delete_forever</mat-icon>
+                </button>
+                <button mat-icon-button (click)="remove()">
+                  <mat-icon color="accent">edit</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <mat-divider
+      [vertical]="true"
+      inset="true"
+      style="min-height: 300px"
+    ></mat-divider>
+    <div fxLayout="column" fxLayoutGap="10" fxFLex="20" *ngIf="loading == true">
+      <button mat-button (click)="loadCapacitacion()">Capacitaciones</button>
+      <button mat-button (click)="loadEvent()">Eventos</button>
+    </div>
+  </div>
+</div>

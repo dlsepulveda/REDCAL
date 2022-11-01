@@ -10,9 +10,13 @@ import { Observable } from "rxjs";
 export class FirebaseService {
   userCollection: AngularFirestoreCollection<userdb>;
   serviceCollection: AngularFirestoreCollection<service>;
+  capacitacionCollection: AngularFirestoreCollection<any>;
+  eventosCollection: AngularFirestoreCollection<any>;
   constructor(private db: AngularFirestore) { 
     this.userCollection = db.collection('/user');
     this.serviceCollection=db.collection('/services');
+    this.capacitacionCollection=db.collection('/capacitacion');
+    this.eventosCollection=db.collection('/eventos');
   }
 
   create(user:userdb) {
@@ -25,6 +29,14 @@ export class FirebaseService {
 
   createService(service:service){
     return this.serviceCollection.add({ ...service });
+  }
+
+  createCapacitacion(capacitacion: any){
+    return this.capacitacionCollection.add({ ...capacitacion });
+  }
+
+  createEventos(eventos: any){
+    return this.eventosCollection.add({ ...eventos });
   }
 
   updateService(service:service){
@@ -41,6 +53,14 @@ export class FirebaseService {
 
   getAllServices(){
     return this.serviceCollection.snapshotChanges().pipe();
+  }
+
+  getAllCapacitacion(){
+    return this.capacitacionCollection.snapshotChanges().pipe();
+  }
+
+  getAllEventos(){
+    return this.eventosCollection.snapshotChanges().pipe();
   }
 
 }
