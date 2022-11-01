@@ -48,7 +48,7 @@ export class FeatureCapacitacionComponent implements OnInit {
   }
 
   loadEvent() {
-    this.capacitacionItem.pop();
+    this.capacitacionItem = [];
     this.loading=false;
     this.FirebaseService.getAllEventos().subscribe((res) => {
       const data = {
@@ -63,16 +63,23 @@ export class FeatureCapacitacionComponent implements OnInit {
   }
 
   loadCapacitacion(){
-    this.capacitacionItem.pop();
+    this.capacitacionItem = [];
     this.loading=false;
     this.FirebaseService.getAllCapacitacion().subscribe((res) => {
-      const data = {
-        urlImage: res[0]?.payload.doc.data().urlImage,
-        title: res[0]?.payload.doc.data().title,
-        detail: res[0]?.payload.doc.data().detail,
-        uid: res[0]?.payload.doc.id,
+      if (res) {
+        res.map(item=>{
+          const data = {
+            urlImage: item?.payload.doc.data().urlImage,
+            title: item?.payload.doc.data().title,
+            detail: item?.payload.doc.data().detail,
+            uid: item?.payload.doc.id,
+          };
+          this.capacitacionItem.push(data);
+        })
+        
+      }else{
+        this.capacitacionItem.push('no hay datos para mostrar');
       };
-      this.capacitacionItem.push(data);
       this.loading = true;
     });
   }
