@@ -35,6 +35,10 @@ export class FirebaseService {
     return this.capacitacionCollection.add({ ...capacitacion });
   }
 
+  deleteCapacitacion(document:string){
+    this.db.collection('capacitacion').doc(document).delete();
+  }
+
   createEventos(eventos: any){
     return this.eventosCollection.add({ ...eventos });
   }

@@ -16,12 +16,15 @@ export class FeatureServiciosComponent implements OnInit {
   urlImage!: any;
   servicesItem: any[] = [];
   cuenta: any;
+  loading: boolean;
   constructor(
     private dialog: MatDialog,
     private storage: AngularFireStorage,
     private FirebaseService: FirebaseService,
     private authService: AuthenticationService
-  ) {}
+  ) {
+    this.loading = false;
+  }
 
   ngOnInit(): void {
     this.cuenta = this.authService.currentUserValue.value;
@@ -35,6 +38,7 @@ export class FeatureServiciosComponent implements OnInit {
             uid: item?.payload.doc.id
           };
           this.servicesItem.push(data);
+          this.loading = true;
         })
       }
     });

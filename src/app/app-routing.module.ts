@@ -12,6 +12,7 @@ import {
   redirectUnauthorizedTo,
 } from '@angular/fire/auth-guard';
 import { GuardGuard } from './core/guard.guard';
+import { NormativaComponent } from './normativa/normativa.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
@@ -30,9 +31,16 @@ const routes: Routes = [
   },
   { path: 'quienes-somos', component: FeatureSomosComponent },
   { path: 'servicios', component: FeatureServiciosComponent },
-  { path: 'capacitaciones', component: FeatureCapacitacionComponent},
+  {
+    path: 'capacitaciones',
+    loadChildren: () =>
+      import('./capacitaciones/capacitacion.Module').then(
+        (m) => m.CapacitacionModule
+      ),
+  },
   { path: 'auth/login', component: LoginComponent },
   { path: 'auth/register', component: RegisterComponent },
+  { path: 'normatividad', component: NormativaComponent },
   {
     path: '**',
     redirectTo: '',

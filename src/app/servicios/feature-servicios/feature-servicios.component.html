@@ -5,6 +5,14 @@
       Agregar Servicio
     </button>
   </div>
+  <mat-progress-spinner
+  *ngIf="loading == false"
+  class="example-margin"
+  [color]="'primary'"
+  [mode]="'indeterminate'"
+  [value]="100"
+>
+</mat-progress-spinner>
   <div *ngFor="let item of servicesItem" fxLayout="column" fxLayoutGap="20" style="min-width: 100%;">
     <mat-card>
       <mat-card-content>
@@ -15,7 +23,7 @@
           fxLayout.xs="column"
         >
           <div fxFlex="40" fxFlex.xs="100">
-            <img [src]="item.urlImage" alt="imagen de servicio" width="100%" />
+            <img [src]="item.urlImage" alt="imagen de servicio" width="100%"  height="400px"/>
           </div>
           <div
             fxFlex="50"

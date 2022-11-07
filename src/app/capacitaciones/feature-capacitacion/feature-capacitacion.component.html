@@ -1,4 +1,9 @@
-<div fxLayout="column" fxLayoutGap="30" fxLayoutAlign="center center" style="margin-top: 20px;">
+<div
+  fxLayout="column"
+  fxLayoutGap="30"
+  fxLayoutAlign="center center"
+  style="margin-top: 20px"
+>
   <h1>CAPACITACIONES Y EVENTOS</h1>
   <div
     fxLayoutAlign="end center"
@@ -21,17 +26,29 @@
     [value]="100"
   >
   </mat-progress-spinner>
-  <div fxLayout="row" fxLayoutAlign="space-between start" fxFill>
-    <div fxLayout="column" style="min-width: 80%" fxLayoutGap="15">
-      <div
-        *ngFor="let item of capacitacionItem"
-      >
+  <div
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutGap.xs="20"
+    fxLayoutGap="0"
+    fxLayoutAlign.xs="center stretch"
+    fxLayoutAlign="space-between start"
+    fxFill
+  >
+    <div
+      fxLayout="column"
+      style="min-width: 80%"
+      fxLayoutGap="15"
+      fxFlexOrder.xs="2"
+    >
+      <div *ngFor="let item of capacitacionItem">
         <mat-card *ngIf="loading == true">
           <mat-card-content>
             <div
               fxLayout="row"
               fxLayoutGap="10"
               fxLayoutAlign="space-around center"
+              fxLayoutAlign.xs="start center"
               fxLayout.xs="column"
             >
               <div fxFlex="40" fxFlex.xs="100">
@@ -45,12 +62,22 @@
                 fxFlex="50"
                 fxLayout="column"
                 fxFlex.xs="100"
-                fxLayoutAlign="center center"
+                fxLayoutAlign="space-around stretch"
+                fxLayoutGap="20"
+                fxFlex.xs="100"
               >
-                <h1>{{ item.title }}</h1>
+                <div fxLayoutAlign="end start" fxFlex="100">
+                  <div>{{ item.fecha }}</div>
+                </div>
+                <div fxLayoutAlign="center start">
+                  <h1>{{ item.title }}</h1>
+                </div>
                 <p>
                   {{ item.detail }}
                 </p>
+                <span
+                  >Link: <a [href]="item.link"> {{ item.link }}</a></span
+                >
               </div>
               <div
                 fxLayout="column"
@@ -58,26 +85,40 @@
                 fxLayoutGap="20"
                 *ngIf="cuenta[0]?.roles === 'admin'"
               >
-                <button mat-icon-button (click)="editar()">
+                <button mat-icon-button (click)="remove(item)">
                   <mat-icon color="primary">delete_forever</mat-icon>
                 </button>
-                <button mat-icon-button (click)="remove()">
+                <button mat-icon-button (click)="editar(item)">
                   <mat-icon color="accent">edit</mat-icon>
                 </button>
               </div>
             </div>
           </mat-card-content>
+          <mat-card-actions align="end">
+            <button mat-raised-button color="accent"(click)="inscribir(item.uid)">Inscribirse</button>
+          </mat-card-actions>
         </mat-card>
       </div>
     </div>
     <mat-divider
+      fxHide.xs="true"
       [vertical]="true"
       inset="true"
       style="min-height: 300px"
     ></mat-divider>
-    <div fxLayout="column" fxLayoutGap="10" fxFLex="20" *ngIf="loading == true">
-      <button mat-button (click)="loadCapacitacion()">Capacitaciones</button>
-      <button mat-button (click)="loadEvent()">Eventos</button>
+    <div
+      fxLayout="column"
+      fxLayoutGap="10"
+      fxFLex="20"
+      *ngIf="loading == true"
+      fxFlexOrder.xs="1"
+    >
+      <button mat-raised-button color="primary" (click)="loadCapacitacion()">
+        Capacitaciones
+      </button>
+      <button mat-raised-button color="primary" (click)="loadEvent()">
+        Eventos
+      </button>
     </div>
   </div>
 </div>

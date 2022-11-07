@@ -5,6 +5,7 @@ import { UploadCapacitacionComponent } from '../ui/upload-capacitacion/upload-ca
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { FirebaseService } from './../../Services/firebase.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-feature-capacitacion',
@@ -27,59 +28,64 @@ export class FeatureCapacitacionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.capacitacionItem=[];
     this.cuenta = this.authService.currentUserValue.value;
     this.FirebaseService.getAllCapacitacion().subscribe((res) => {
       if (res) {
-        res.map(item=>{
+        res.map((item) => {
           const data = {
             urlImage: item?.payload.doc.data().urlImage,
             title: item?.payload.doc.data().title,
             detail: item?.payload.doc.data().detail,
             uid: item?.payload.doc.id,
+            link: item?.payload.doc.data().link,
+            fecha: item?.payload.doc.data().fecha,
           };
           this.capacitacionItem.push(data);
-        })
-        
-      }else{
-        this.capacitacionItem.push('no hay datos para mostrar');
-      };
+        });
+      }
       this.loading = true;
     });
   }
 
   loadEvent() {
     this.capacitacionItem = [];
-    this.loading=false;
+    this.loading = false;
     this.FirebaseService.getAllEventos().subscribe((res) => {
-      const data = {
-        urlImage: res[0]?.payload.doc.data().urlImage,
-        title: res[0]?.payload.doc.data().title,
-        detail: res[0]?.payload.doc.data().detail,
-        uid: res[0]?.payload.doc.id,
-      };
-      this.capacitacionItem.push(data);
-      this.loading = true;
-    });
-  }
-
-  loadCapacitacion(){
-    this.capacitacionItem = [];
-    this.loading=false;
-    this.FirebaseService.getAllCapacitacion().subscribe((res) => {
       if (res) {
-        res.map(item=>{
+        res.map((item) => {
           const data = {
             urlImage: item?.payload.doc.data().urlImage,
             title: item?.payload.doc.data().title,
             detail: item?.payload.doc.data().detail,
             uid: item?.payload.doc.id,
+            link: item?.payload.doc.data().link,
+            fecha: item?.payload.doc.data().fecha,
           };
           this.capacitacionItem.push(data);
-        })
-        
-      }else{
-        this.capacitacionItem.push('no hay datos para mostrar');
-      };
+        });
+      }
+      this.loading = true;
+    });
+  }
+
+  loadCapacitacion() {
+    this.capacitacionItem = [];
+    this.loading = false;
+    this.FirebaseService.getAllCapacitacion().subscribe((res) => {
+      if (res) {
+        res.map((item) => {
+          const data = {
+            urlImage: item?.payload.doc.data().urlImage,
+            title: item?.payload.doc.data().title,
+            detail: item?.payload.doc.data().detail,
+            uid: item?.payload.doc.id,
+            link: item?.payload.doc.data().link,
+            fecha: item?.payload.doc.data().fecha,
+          };
+          this.capacitacionItem.push(data);
+        });
+      }
       this.loading = true;
     });
   }
@@ -96,7 +102,7 @@ export class FeatureCapacitacionComponent implements OnInit {
     dialogRef.afterClosed().subscribe(() => {});
   }
 
-  openModalEvento(){
+  openModalEvento() {
     const dialogRef = this.dialog.open(UploadCapacitacionComponent, {
       width: 'auto',
       autoFocus: false,
@@ -128,6 +134,8 @@ export class FeatureCapacitacionComponent implements OnInit {
                   title: datos.title,
                   detail: datos.details,
                   uid: '',
+                  fecha: moment(datos.fecha).format('DD-MM-YYYY'),
+                  link: datos.link,
                 };
                 return FirebaseService.createCapacitacion(data)
                   .then(() => {
@@ -164,6 +172,8 @@ export class FeatureCapacitacionComponent implements OnInit {
                   title: datos.title,
                   detail: datos.details,
                   uid: '',
+                  fecha: datos.fecha,
+                  link: datos.link,
                 };
                 return FirebaseService.createEventos(data)
                   .then(() => {
@@ -180,10 +190,23 @@ export class FeatureCapacitacionComponent implements OnInit {
     };
   }
 
-  remove() {
-    //throw new Error('Method not implemented.');
+  remove(item:any) {
+    this.FirebaseService.deleteCapacitacion(item.uid);
+    this.uploadCapacitacion();
   }
-  editar() {
-    //throw new Error('Method not implemented.');
+  editar(item:any) {
+    const dialogRef = this.dialog.open(UploadCapacitacionComponent, {
+      width: 'auto',
+      autoFocus: false,
+      disableClose: true,
+      height: 'auto',
+      data: {aplicacion: this.uploadCapacitacion(), data:item}
+    });
+
+    dialogRef.afterClosed().subscribe(() => {});
+  }
+
+  inscribir(uid:string){
+    
   }
 }

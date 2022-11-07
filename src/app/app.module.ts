@@ -25,6 +25,9 @@ import { UploadServiceComponent } from './servicios/ui/upload-service/upload-ser
 import { FirebaseService } from './Services/firebase.service';
 import { AuthenticationService } from './Services/authentication.service';
 import { UploadCapacitacionComponent } from './capacitaciones/ui/upload-capacitacion/upload-capacitacion.component';
+import { NormativaComponent } from './normativa/normativa.component';
+import { ErrorMessageService } from './Services/error-message.service';
+
 
 @NgModule({
   declarations: [
@@ -35,10 +38,10 @@ import { UploadCapacitacionComponent } from './capacitaciones/ui/upload-capacita
     LoginComponent,
     RegisterComponent,
     FeatureServiciosComponent,
-    FeatureCapacitacionComponent,
     FeatureSomosComponent,
     UploadServiceComponent,
-    UploadCapacitacionComponent
+    UploadCapacitacionComponent,
+    NormativaComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,7 @@ import { UploadCapacitacionComponent } from './capacitaciones/ui/upload-capacita
     provideAuth(() => getAuth()),
     AngularFirestoreModule, 
   ],
-  providers: [FirebaseService, AuthenticationService],
+  providers: [FirebaseService, AuthenticationService, ErrorMessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

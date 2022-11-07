@@ -14,10 +14,15 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [],
   imports: [
+    MatNativeDateModule,
+    MatDatepickerModule,
     CommonModule,
     MatSliderModule,
     MatFormFieldModule,
@@ -34,9 +39,11 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatDialogModule,
   ],
   exports: [
+    MatNativeDateModule,
     MatSliderModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDatepickerModule,
     MatButtonModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
