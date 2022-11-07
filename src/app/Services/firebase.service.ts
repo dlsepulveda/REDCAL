@@ -12,11 +12,13 @@ export class FirebaseService {
   serviceCollection: AngularFirestoreCollection<service>;
   capacitacionCollection: AngularFirestoreCollection<any>;
   eventosCollection: AngularFirestoreCollection<any>;
+  usercapacitacionCollection:AngularFirestoreCollection<any>;
   constructor(private db: AngularFirestore) { 
     this.userCollection = db.collection('/user');
     this.serviceCollection=db.collection('/services');
     this.capacitacionCollection=db.collection('/capacitacion');
     this.eventosCollection=db.collection('/eventos');
+    this.usercapacitacionCollection=db.collection('/userCapacitacion');
   }
 
   create(user:userdb) {
@@ -65,6 +67,10 @@ export class FirebaseService {
 
   getAllEventos(){
     return this.eventosCollection.snapshotChanges().pipe();
+  }
+
+  createUserCapacitacion(userCapacitacion:any){
+    return this.usercapacitacionCollection.add({...userCapacitacion});
   }
 
 }

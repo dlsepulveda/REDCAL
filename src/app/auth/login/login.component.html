@@ -1,9 +1,17 @@
-<div fxLayoutAlign="center stretch">
+<div fxLayoutAlign="center stretch" class="content">
+  <div fxLayoutAlign="center center" class="" fxHide.xs="true">
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/redcal-8c1d7.appspot.com/o/Logo.jfif?alt=media&token=19ce4a2d-225d-4862-9dce-8b5fae6274ae"
+      alt="logo RLSC"
+      width="100%"
+    />
+  </div>
   <form
     class="custom-form"
     [formGroup]="form"
     fxLayout="row wrap"
     fxLayoutAlign="center center"
+    fxFlex.xs="100"
   >
     <mat-form-field class="form-control" fxFlex="100">
       <mat-label>Email</mat-label>

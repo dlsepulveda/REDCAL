@@ -1,6 +1,20 @@
-
 <div fxLayoutAlign="center stretch">
-  <form class="custom-form" [formGroup]="form" fxLayout="row wrap" fxLayoutAlign="space-between center">
+  <form
+    class="custom-form"
+    [formGroup]="form"
+    fxLayout="row wrap"
+    fxLayoutAlign="space-between center"
+    fxFlex.xs="100"
+  >
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/redcal-8c1d7.appspot.com/o/Logo.jfif?alt=media&token=19ce4a2d-225d-4862-9dce-8b5fae6274ae"
+      alt="logo RLSC"
+      width="70%"
+      style="margin: 0 auto; margin-bottom: 10px;"
+    />
+    <div fxFlex="100" fxLayoutAlign="center center">
+      <h1 >REGISTRO DE CUENTA</h1>
+    </div>
     <mat-form-field class="form-control" fxFlex="40" fxFlex.xs="100">
       <mat-label>Nombres</mat-label>
       <input matInput formControlName="name" type="text" required />
@@ -32,10 +46,20 @@
         Contraseña es requerido
       </mat-error>
     </mat-form-field>
+    <mat-form-field class="form-control" fxFlex="100">
+      <mat-label>Cargo (Opcional)</mat-label>
+      <input matInput formControlName="cargo" type="text" />
+    </mat-form-field>
     <div class="form-footer" fxFlex="100" fxLayoutAlign="center center">
-      <button [disabled]="form.invalid || loading"  mat-raised-button color="primary" type="submit" (click)="register()">
+      <button
+        [disabled]="form.invalid || loading"
+        mat-raised-button
+        color="primary"
+        type="submit"
+        (click)="register()"
+      >
         Enviar
       </button>
     </div>
   </form>
-  </div>
+</div>

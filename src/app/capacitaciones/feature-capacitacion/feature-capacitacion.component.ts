@@ -6,6 +6,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { FirebaseService } from './../../Services/firebase.service';
 import * as moment from 'moment';
+import { InscribirComponent } from '../ui/inscribir/inscribir.component';
 
 @Component({
   selector: 'app-feature-capacitacion',
@@ -28,7 +29,7 @@ export class FeatureCapacitacionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.capacitacionItem=[];
+    this.capacitacionItem = [];
     this.cuenta = this.authService.currentUserValue.value;
     this.FirebaseService.getAllCapacitacion().subscribe((res) => {
       if (res) {
@@ -190,23 +191,49 @@ export class FeatureCapacitacionComponent implements OnInit {
     };
   }
 
-  remove(item:any) {
+  remove(item: any) {
     this.FirebaseService.deleteCapacitacion(item.uid);
     this.uploadCapacitacion();
   }
-  editar(item:any) {
+  editar(item: any) {
     const dialogRef = this.dialog.open(UploadCapacitacionComponent, {
       width: 'auto',
       autoFocus: false,
       disableClose: true,
       height: 'auto',
-      data: {aplicacion: this.uploadCapacitacion(), data:item}
+      data: { aplicacion: this.uploadCapacitacion(), data: item },
     });
 
     dialogRef.afterClosed().subscribe(() => {});
   }
 
-  inscribir(uid:string){
-    
+  inscribir(uid: string) {
+    const dialogRef = this.dialog.open(InscribirComponent, {
+      width: 'auto',
+      autoFocus: false,
+      disableClose: true,
+      height: 'auto',
+      data: { aplicacion: this.inscribirUser(), data: uid },
+    });
+  }
+
+  inscribirUser() {
+    const FirebaseService = this.FirebaseService;
+    return (datos: any): any => {
+      const data = {
+        title: datos.title,
+        detail: datos.details,
+        fecha: datos.fecha,
+        link: datos.link,
+        uidCapacitacion: datos.uidCapacitacion,
+      };
+      return FirebaseService.createUserCapacitacion(data)
+        .then(() => {
+          return true;
+        })
+        .catch(() => {
+          return false;
+        });
+    };
   }
 }

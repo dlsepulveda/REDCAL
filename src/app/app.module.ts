@@ -27,6 +27,7 @@ import { AuthenticationService } from './Services/authentication.service';
 import { UploadCapacitacionComponent } from './capacitaciones/ui/upload-capacitacion/upload-capacitacion.component';
 import { NormativaComponent } from './normativa/normativa.component';
 import { ErrorMessageService } from './Services/error-message.service';
+import { InscribirComponent } from './capacitaciones/ui/inscribir/inscribir.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { ErrorMessageService } from './Services/error-message.service';
     FeatureSomosComponent,
     UploadServiceComponent,
     UploadCapacitacionComponent,
-    NormativaComponent
+    NormativaComponent,
+    InscribirComponent
   ],
   imports: [
     BrowserModule,
