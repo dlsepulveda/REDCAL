@@ -28,6 +28,7 @@ import { UploadCapacitacionComponent } from './capacitaciones/ui/upload-capacita
 import { NormativaComponent } from './normativa/normativa.component';
 import { ErrorMessageService } from './Services/error-message.service';
 import { InscribirComponent } from './capacitaciones/ui/inscribir/inscribir.component';
+import { ComitesComponent } from './comites/comites.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { InscribirComponent } from './capacitaciones/ui/inscribir/inscribir.comp
     UploadServiceComponent,
     UploadCapacitacionComponent,
     NormativaComponent,
-    InscribirComponent
+    InscribirComponent,
+    ComitesComponent
   ],
   imports: [
     BrowserModule,

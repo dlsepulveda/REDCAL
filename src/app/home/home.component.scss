@@ -1,0 +1,70 @@
+mat-divider {
+  width: 90%;
+}
+
+.cuadrado {
+  background-color: #7d1838;
+  padding: 20px;
+  margin-bottom: 10px ;
+  h1 {
+    color: white;
+  }
+  .cuadrado1,
+  .cuadrado2,
+  .cuadrado3 {
+    min-width: 300px;
+    height: 300px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    opacity: 0.5;
+    transition: ease-in-out 0.5s;
+  }
+  .cuadrado1:hover,
+  .cuadrado2:hover,
+  .cuadrado3:hover {
+    cursor: pointer;
+    opacity: 1;
+    transform: translateY(-10px);
+    transition: ease-in-out 0.5s;
+  }
+  .cuadrado1 {
+    background-color: gray;
+  }
+  .cuadrado2 {
+    background-color: black;
+  }
+  .cuadrado3 {
+    background-color: chocolate;
+  }
+}
+
+.miembros {
+  max-width: 90%;
+  margin-top: 20px;
+}
+li {
+  font-size: 16px;
+  padding: 10px 0px 10px 0px;
+}
+h1 {
+  font-size: 36px;
+}
+.derechos {
+  margin-top: 20px;
+}
+
+.texto-encima {
+  position: absolute;
+  top: 40%;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  max-width: 60%;
+  text-align: center;
+  left: 20%;
+}
+
+.container-image {
+  position: relative;
+}

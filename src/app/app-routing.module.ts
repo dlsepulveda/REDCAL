@@ -13,6 +13,7 @@ import {
 } from '@angular/fire/auth-guard';
 import { GuardGuard } from './core/guard.guard';
 import { NormativaComponent } from './normativa/normativa.component';
+import { ComitesComponent } from './comites/comites.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
@@ -39,6 +40,7 @@ const routes: Routes = [
       ),
   },
   { path: 'auth/login', component: LoginComponent },
+  { path: 'comites', component: ComitesComponent },
   { path: 'auth/register', component: RegisterComponent },
   { path: 'normatividad', component: NormativaComponent },
   {

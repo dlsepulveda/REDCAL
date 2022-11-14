@@ -1,0 +1,22 @@
+mat-icon {
+  font-size: 50px;
+  height: 50px;
+  width: 50px;
+}
+
+span {
+  text-align: center;
+}
+
+.comites:hover {
+  cursor: pointer;
+  transform: translateY(-10px);
+  transition: ease-in-out 0.5s;
+  background-color: #7D1838;
+  color: white;
+  border-radius: 16px;
+}
+
+.comite {
+  transition: ease-in-out 0.5s;
+}

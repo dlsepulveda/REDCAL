@@ -16,33 +16,201 @@
         técnicos, contratos y tareas propias de la Red.
       </h4>
     </div>
-    <div fxLayoutAlign="center center">
-      <img
-        src="https://firebasestorage.googleapis.com/v0/b/redcal-8c1d7.appspot.com/o/membresia.png?alt=media&token=e2fbb978-7424-4605-b0c2-1d491a467c5b"
-        alt="Membresia"
-        width="80%"
-      />
-    </div>
-    <div>
-      <img
-        src="https://firebasestorage.googleapis.com/v0/b/redcal-8c1d7.appspot.com/o/derechosRed.png?alt=media&token=4006e51a-358f-40a2-abcd-fe3c593243cc"
-        alt="derechos red"
-        width="100%"
-      />
-    </div>
-    <div>
-      <img
-        src="https://firebasestorage.googleapis.com/v0/b/redcal-8c1d7.appspot.com/o/obligacionesRed.png?alt=media&token=2a892b95-f1de-4309-84d0-2de712177517"
-        alt="Obligaciones red"
-        width="100%"
-      />
-    </div>
-    <div fxLayoutAlign="center center">
-      <img
-        src="https://firebasestorage.googleapis.com/v0/b/redcal-8c1d7.appspot.com/o/requisitosRED.png?alt=media&token=06bb098b-81a3-4bc6-acae-eaaa06bd5911"
-        alt="Requisitos RED"
-        width="80%"
-      />
+    <div
+      fxLayoutAlign="center center"
+      fxFlex="100"
+      fxLayout="column"
+      fxLayoutGap="20"
+    >
+      <!-- miembros -->
+      <div fxFlex="100" fxLayoutAlign="space-around center" fxLayout="row wrap">
+        <h1 fxFlex="100" fxLayoutAlign="center center">
+          ¿QUE IMPLICA SER MIEMBRO DE LA RED?
+        </h1>
+        <b style="font-size: 16px" fxFlex="100" fxLayoutAlign="center center"
+          >Según su Acta Constitutiva sus asociados tendrán el derecho de:</b
+        >
+        <div fxFLex="50">
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/redcal-8c1d7.appspot.com/o/Captura%20de%20pantalla%202022-11-14%20111358.png?alt=media&token=6707dad1-61b6-4621-bc5e-67d6c9112c14"
+            alt=""
+            width="370px"
+          />
+        </div>
+        <div
+          fxLayoutAlign="center start"
+          fxLayout="column"
+          class="miembros"
+          fxFlex="50"
+        >
+          <li>
+            Elegir y ser electos en los cargos directivos y/o de fiscalía de la
+            Red.
+          </li>
+          <li>
+            Participar en las actividades educativas, culturales, recreativas y
+            sociales que organice la Red.
+          </li>
+          <li>
+            Servir de enlace con socios y aliados estratégicos institucionales o
+            privados.
+          </li>
+          <li>
+            Participación en Comités Técnicos de la RLSC o como representante
+            designado en Comités normativos externos o internacionales.
+          </li>
+          <li>Ser instructor autorizado de cursos avalados por la RLSC.</li>
+          <li>Participar con voz y voto en las Asambleas Generales</li>
+          <li>Presentar mociones y sugerencias en las Asambleas.</li>
+        </div>
+      </div>
+      <!-- guia -->
+      <div fxLayout="column" class="cuadrado" fxFill>
+        <h1 fxLayoutAlign="center center">GUIA DE USUARIO</h1>
+        <div fxLayoutAlign="space-evenly center" fxFlex="100">
+          <div
+            class="cuadrado1"
+            fxLayoutAlign="center center"
+            routerLink="/servicios"
+          >
+            Servicios
+          </div>
+          <div
+            class="cuadrado2"
+            fxLayoutAlign="center center"
+            routerLink="/capacitaciones"
+          >
+            Capacitaciones
+          </div>
+          <div
+            class="cuadrado3"
+            fxLayoutAlign="center center"
+            routerLink="/comites"
+          >
+            Comités
+          </div>
+        </div>
+      </div>
+      <!-- membresia -->
+      <div
+        fxFlex="100"
+        fxLayoutAlign="space-around center"
+        fxLayout="row wrap"
+        fxLayoutGap="20"
+      >
+        <h1 fxFlex="100" fxLayoutAlign="center center">MEMBRESÍA</h1>
+        <span fxFlex="45" style="font-size: 16px; text-align: justify"
+          >Los objetivos principales de la Red se centran en compartir
+          experiencias entre usuarios, consultores y empresas de servicios,
+          relacionados con normativa y mejores prácticas para la fabricación,
+          instalación, cuidados y control, inspección, mantenimiento y
+          reparación de calderas y sus equipos periféricos, buscando la
+          seguridad, eficiencia y el cumplimiento ambiental.</span
+        >
+        <div fxFlex="40" fxLayoutAlign="center center">
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/redcal-8c1d7.appspot.com/o/Captura%20de%20pantalla%202022-11-14%20111415.png?alt=media&token=0409525d-4961-40f0-9482-4017248d7115"
+            alt=""
+          />
+        </div>
+      </div>
+
+      <!-- derechos -->
+      <!-- <div fxFlex="45">
+        <h1>DERECHOS DE LOS MIEMBROS</h1>
+        <span
+          >Los asociados tendrán el derecho de a) Elegir y ser electos en los
+          cargos directivos y/o de fiscalía de la Red, b) Participar en las
+          actividades educativas, culturales, recreativas y sociales que
+          organice la Red, c) Participar con voz y voto en las Asambleas
+          Generales, d) Presentar mociones y sugerencias en las Asambleas, e)
+          Presentar denuncias ante la fiscalía y la Asamblea General de la Red
+          sobre cualquier irregularidad que notare en el desempeño de las
+          funciones de la Junta Directiva y otros miembros de la Asociación.
+          (tomado del Acta Constitutiva de la Red)</span
+        >
+      </div> -->
+
+      <!-- derechos -->
+      <div fxFlex="100" fxLayoutAlign="center center" class="derechos">
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/redcal-8c1d7.appspot.com/o/derechosRed.png?alt=media&token=4006e51a-358f-40a2-abcd-fe3c593243cc"
+          alt="derechos red"
+        />
+      </div>
+      <!-- obligaciones -->
+      <div
+        fxFlex="100"
+        fxLayoutAlign="center center"
+        fxLayoutGap="20"
+        class="derechos"
+      >
+        <div fxFlex="40">
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/redcal-8c1d7.appspot.com/o/Captura%20de%20pantalla%202022-11-14%20111030.png?alt=media&token=3b7de26e-c892-4fc8-a4ff-bbf37d259006"
+            alt=""
+            width="100%"
+          />
+        </div>
+        <div fxFlex="50">
+          <h1>OBLIGACIONES DE LOS MIEMBROS</h1>
+          <span
+            >● Las personas físicas o jurídicas que se incorporen a la Red
+            deberán regirse por el presente Código de Ética, y solo podrán
+            representar a la Red cuando los órganos de gobierno de la Red, así
+            se lo soliciten formalmente. Esto no impide que puedan hacer
+            acciones de divulgación sobre las acciones públicas y en curso de la
+            Red, con el fin de fomentar la membresía de personas, empresas o
+            instituciones interesadas en contribuir a los objetivos de la Red.
+            <br
+          /></span>
+          <span
+            >● Los miembros incorporados a la Red están al servicio de la
+            sociedad. Por consiguiente, tienen la obligación de contribuir al
+            bienestar humano, dando importancia primordial a la protección de la
+            vida, a la adecuada utilización de los recursos y a la conservación
+            de un ambiente sano, la sostenibilidad, tomando medidas para
+            prevenir, minimizar o mitigar potenciales impactos ambientales
+            negativos. <br
+          /></span>
+          <span
+            >● Los miembros cuidarán que los recursos de la Red sean
+            adecuadamente utilizados haciendo los estudios necesarios para
+            evitar su uso abusivo o dispendioso. <br />
+          </span>
+          <span
+            >● Los miembros que tengan conocimiento de hechos o condiciones
+            relacionados con sus disciplinas, que en su opinión pongan en
+            peligro la seguridad de la vida, la salud, el ambiente, los bienes o
+            el bienestar de la colectividad, deberán informar de ello al
+            responsable de esas situaciones si fuere posible; si no fuere
+            posible o si ello no fuere suficiente, informará a las autoridades
+            correspondientes. <br
+          /></span>
+          <span
+            >●Los miembros se deben comprometer a mantenerse actualizados en las
+            disciplinas que aplican en su labor o profesión y a su
+            perfeccionamiento técnico y profesional y procurar la difusión de
+            los conocimientos adquiridos entre sus colegas. <br
+          /></span>
+          <span
+            >● Los miembros no deberán aceptar tareas u ocupaciones para las que
+            no se encuentren capacitados, o que pongan en riesgo la vida, la
+            seguridad o ambiente en el que se desarrollan éstas. Asimismo, sólo
+            podrán pronunciarse sobre aspectos de los cuales tengan pleno
+            conocimiento de los hechos relacionados. <br
+          /></span>
+          <span
+            >● Los miembros deben cumplir con la Ley de Asociaciones, los
+            Estatutos y los Reglamentos, así como de los acuerdos que emanen de
+            sus órganos, pagar puntualmente las cuotas, asistir a las reuniones
+            a las que fueren convocados, cooperar en la conservación de bienes y
+            el buen desarrollo de las actividades de la Asociación, apoyar las
+            gestiones que realice la Asociación para el cumplimiento de sus
+            objetivos. (tomado del Acta Constitutiva) <br
+          /></span>
+        </div>
+      </div>
     </div>
     <div fxLayoutAlign="center center">
       <img
