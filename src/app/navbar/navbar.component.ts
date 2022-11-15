@@ -16,10 +16,10 @@ export class NavbarComponent implements OnInit {
     
   }
 
-  singOut(){
-    this.authService.logout().then(res=>{
-      this.router.navigate(['auth/login']);
-    });
+  // singOut(){
+  //   this.authService.logout().then(res=>{
+  //     this.router.navigate(['auth/login']);
+  //   });
     
-  }
+  // }
 }

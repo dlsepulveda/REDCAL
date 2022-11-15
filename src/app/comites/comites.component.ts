@@ -3,13 +3,14 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-comites',
   templateUrl: './comites.component.html',
-  styleUrls: ['./comites.component.scss']
+  styleUrls: ['./comites.component.scss'],
 })
 export class ComitesComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  getComites() {
+    console.log('muestra');
   }
-
 }
