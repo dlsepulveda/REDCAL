@@ -212,12 +212,73 @@
         </div>
       </div>
     </div>
-    <!-- <div fxLayoutAlign="center center">
-      <img
-        src="https://firebasestorage.googleapis.com/v0/b/redcal-8c1d7.appspot.com/o/tiposMienbros.png?alt=media&token=892e0cd3-ef30-473c-9687-01f2efcc9fa6"
-        alt="Tipos de miembros"
-        width="80%"
-      />
-    </div> -->
+    <div fxFill fxLayout="row wrap" fxLayoutAlign="center center" class="card">
+      <h1 fxFlex="100" fxLayoutAlign="center center">CONTACTANOS</h1>
+      <mat-card fxLayoutAlign="center center">
+        <mat-card-content fxLayout="row wrap" fxLayoutAlign="center center">
+          <div
+            fxLayout="column"
+            fxLayoutAlign="space-around center"
+            style="padding: 20px"
+          >
+            <div fxFLex="100">
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/redcal-8c1d7.appspot.com/o/logo.png?alt=media&token=e6207e3f-4aed-4561-a985-aba498b12dd4"
+                class="logo"
+                width.xs="100%"
+                height="80"
+              />
+            </div>
+            <h3 style="max-width: 300px">
+              Comunicate con nosotros a
+              <span style="color: #7d1838">info@redseguridadcalderas.org</span>
+              y hazte miembro.
+            </h3>
+          </div>
+          <div>
+            <form fxLayout="column" [formGroup]="formulario">
+              <mat-form-field appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input
+                  matInput
+                  placeholder="Ingrese nombre"
+                  formControlName="name"
+                />
+                <!-- <mat-error *ngIf="formulario.get('title')?.invalid">
+                  {{ errorFormulario('title') }}
+                </mat-error> -->
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Correo</mat-label>
+                <input
+                  matInput
+                  placeholder="Ingrese correo electronico"
+                  formControlName="email"
+                />
+                <!-- <mat-error *ngIf="formulario.get('title')?.invalid">
+                  {{ errorFormulario('title') }}
+                </mat-error> -->
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Mensaje</mat-label>
+
+                <textarea
+                  matInput
+                  placeholder="Ingrese mensaje"
+                  formControlName="messagge"
+                ></textarea>
+              </mat-form-field>
+            </form>
+          </div>
+          <div fxFlex="90" fxLayoutAlign="end center">
+            <button mat-raised-button color="primary" type="submit">
+              Enviar
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
 </section>

@@ -5,7 +5,7 @@ mat-divider {
 .cuadrado {
   background-color: #7d1838;
   padding: 20px;
-  margin-bottom: 10px ;
+  margin-bottom: 10px;
   h1 {
     color: white;
   }
@@ -43,6 +43,15 @@ mat-divider {
   max-width: 90%;
   margin-top: 20px;
 }
+
+.card {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  ::ng-deep.mat-card {
+    padding: 10px;
+  }
+}
+
 li {
   font-size: 16px;
   padding: 10px 0px 10px 0px;
