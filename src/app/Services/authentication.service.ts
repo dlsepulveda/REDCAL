@@ -56,6 +56,7 @@ export class AuthenticationService {
               this.currentUserSubject.next(res);
               this.router.navigate(['/home']);
             });
+            
           }
         });
       });
@@ -102,7 +103,9 @@ export class AuthenticationService {
       lastName: '',
     };
     this.currentUserSubject.next(userData);
-    return signOut(this.auth);
+    return signOut(this.auth).then(()=>{
+      
+    });
   }
 
 

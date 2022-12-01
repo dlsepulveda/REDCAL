@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { tap } from 'rxjs';
 import { ErrorMessageService } from 'src/app/Services/error-message.service';
 
 @Component({
@@ -28,6 +29,7 @@ export class UploadCapacitacionComponent implements OnInit {
       details: ['', Validators.required],
       link: ['', Validators.required],
       fecha: ['', Validators.required],
+      uid:[''],
     });
 
     if(this.delegado.data){
@@ -36,6 +38,7 @@ export class UploadCapacitacionComponent implements OnInit {
       this.formulario.get('details')?.setValue(this.delegado.data.detail);
       this.formulario.get('link')?.setValue(this.delegado.data.link);
       this.formulario.get('fecha')?.setValue(this.delegado.data.fecha);
+      this.formulario.get('uid')?.setValue(this.delegado.data.uid);
     }
   }
 

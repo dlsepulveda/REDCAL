@@ -1,5 +1,3 @@
-import { FeatureCapacitacionComponent } from './capacitaciones/feature-capacitacion/feature-capacitacion.component';
-import { FeatureServiciosComponent } from './servicios/feature-servicios/feature-servicios.component';
 import { FeatureSomosComponent } from './quienes-somos/feature-somos/feature-somos.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -7,18 +5,16 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import {
-  canActivate,
   redirectLoggedInTo,
   redirectUnauthorizedTo,
 } from '@angular/fire/auth-guard';
-import { GuardGuard } from './core/guard.guard';
-import { NormativaComponent } from './normativa/normativa.component';
 import { ComitesComponent } from './comites/comites.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 
 const routes: Routes = [
+  
   {
     path: 'home',
     component: HomeComponent,
@@ -31,7 +27,11 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   { path: 'quienes-somos', component: FeatureSomosComponent },
-  { path: 'servicios', component: FeatureServiciosComponent },
+  {
+    path: 'servicios',
+    loadChildren: () =>
+      import('./servicios/servicios.Module').then((m) => m.ServiciosModule),
+  },
   {
     path: 'capacitaciones',
     loadChildren: () =>
@@ -42,7 +42,11 @@ const routes: Routes = [
   { path: 'auth/login', component: LoginComponent },
   { path: 'comites', component: ComitesComponent },
   { path: 'auth/register', component: RegisterComponent },
-  { path: 'normatividad', component: NormativaComponent },
+  {
+    path: 'normatividad',
+    loadChildren: () =>
+      import('./normativa/normativa.Module').then((m) => m.NormativaModule),
+  },
   {
     path: '**',
     redirectTo: '',

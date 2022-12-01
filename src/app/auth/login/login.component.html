@@ -1,7 +1,7 @@
-<div fxLayoutAlign="center stretch" class="content">
+<div fxLayoutAlign="center center" class="content">
   <div fxLayoutAlign="center center" class="" fxHide.xs="true">
     <img
-      src="https://firebasestorage.googleapis.com/v0/b/redcal-8c1d7.appspot.com/o/Logo.jfif?alt=media&token=19ce4a2d-225d-4862-9dce-8b5fae6274ae"
+      src="https://firebasestorage.googleapis.com/v0/b/redcal-8c1d7.appspot.com/o/logo.png?alt=media&token=e6207e3f-4aed-4561-a985-aba498b12dd4"
       alt="logo RLSC"
       width="100%"
     />
@@ -38,7 +38,9 @@
       fxLayout="row"
       fxLayoutAlign="center center"
     >
-      <mat-icon aria-hidden="false" color="accent" class="icon-warning">warning</mat-icon>
+      <mat-icon aria-hidden="false" color="accent" class="icon-warning"
+        >warning</mat-icon
+      >
       {{ error_message }}
     </div>
 
@@ -52,6 +54,13 @@
       >
         Enviar
       </button>
+    </div>
+    <!-- registrarse -->
+    <div style="margin-top: 20px;">
+      Si no tienes cuenta,
+      <span style="color: brown; cursor: pointer" routerLink="/auth/register">
+        registrate aqui
+      </span>
     </div>
   </form>
 </div>

@@ -41,7 +41,7 @@
       fxLayoutGap="15"
       fxFlexOrder.xs="2"
     >
-      <div *ngFor="let item of capacitacionItem">
+      <div *ngFor="let item of capacitacionItem; index as index">
         <mat-card *ngIf="loading == true">
           <mat-card-content>
             <div
@@ -76,7 +76,7 @@
                   {{ item.detail }}
                 </p>
                 <span
-                  >Link: <a [href]="item.link"> {{ item.link }}</a></span
+                  >Lugar: <a [href]="item.link"> {{ item.link }}</a></span
                 >
               </div>
               <div
@@ -85,7 +85,7 @@
                 fxLayoutGap="20"
                 *ngIf="cuenta[0]?.roles === 'admin'"
               >
-                <button mat-icon-button (click)="remove(item)">
+                <button mat-icon-button (click)="remove(item, index)">
                   <mat-icon color="primary">delete_forever</mat-icon>
                 </button>
                 <button mat-icon-button (click)="editar(item)">
@@ -95,7 +95,13 @@
             </div>
           </mat-card-content>
           <mat-card-actions align="end">
-            <button mat-raised-button color="accent"(click)="inscribir(item.uid)">Inscribirse</button>
+            <button
+              mat-raised-button
+              color="accent"
+              (click)="inscribir(item.uid)"
+            >
+              Inscribirse
+            </button>
           </mat-card-actions>
         </mat-card>
       </div>

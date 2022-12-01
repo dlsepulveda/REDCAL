@@ -5,6 +5,7 @@ import { UploadServiceComponent } from '../ui/upload-service/upload-service.comp
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize, tap } from 'rxjs/operators';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-feature-servicios',
@@ -21,7 +22,8 @@ export class FeatureServiciosComponent implements OnInit {
     private dialog: MatDialog,
     private storage: AngularFireStorage,
     private FirebaseService: FirebaseService,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private router: Router
   ) {
     this.loading = false;
   }
@@ -29,17 +31,17 @@ export class FeatureServiciosComponent implements OnInit {
   ngOnInit(): void {
     this.cuenta = this.authService.currentUserValue.value;
     this.FirebaseService.getAllServices().subscribe((res) => {
-      if(res){
-        res.map(item=>{
+      if (res) {
+        res.map((item) => {
           const data = {
             urlImage: item?.payload.doc.data().urlImage,
             title: item?.payload.doc.data().title,
             detail: item?.payload.doc.data().detail,
-            uid: item?.payload.doc.id
+            uid: item?.payload.doc.id,
           };
           this.servicesItem.push(data);
           this.loading = true;
-        })
+        });
       }
     });
   }
@@ -77,13 +79,7 @@ export class FeatureServiciosComponent implements OnInit {
                   detail: datos.details,
                   uid: '',
                 };
-                return FirebaseService.createService(data)
-                  .then(() => {
-                    return true;
-                  })
-                  .catch(() => {
-                    return false;
-                  });
+                return FirebaseService.createService(data);
               },
             }));
           })
@@ -92,10 +88,52 @@ export class FeatureServiciosComponent implements OnInit {
     };
   }
 
-  remove() {
-    //throw new Error('Method not implemented.');
+  updateServices() {
+    const FirebaseService = this.FirebaseService;
+    const storageService = this.storage;
+    const id = Math.random().toString(36).substring(2);
+    return (datos: any, file: string): any => {
+      const filePath = `servicios/${id}`;
+      const ref = storageService.ref(filePath);
+      const task = storageService.upload(filePath, file);
+      this.uploadPercent = task.percentageChanges();
+      return task
+        .snapshotChanges()
+        .pipe(
+          finalize(() => {
+            return (this.urlImage = ref.getDownloadURL().subscribe({
+              next(x) {
+                const data = {
+                  urlImage: x,
+                  title: datos.title,
+                  detail: datos.details,
+                  uid: datos.uid,
+                };
+                return FirebaseService.updateServices(data);
+              },
+            }));
+          })
+        )
+        .subscribe();
+    };
   }
-  editar() {
-    //throw new Error('Method not implemented.');
+
+  remove(item: any, index: number) {
+    this.FirebaseService.deleteServices(item.uid);
+    this.servicesItem=[]
+    this.router.navigate(['/home'])
+  }
+  editar(item: any) {
+    const dialogRef = this.dialog.open(UploadServiceComponent, {
+      width: 'auto',
+      autoFocus: false,
+      disableClose: true,
+      height: 'auto',
+      data: { aplicacion: this.updateServices(), data: item },
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.router.navigate(['/home'])
+    });
   }
 }

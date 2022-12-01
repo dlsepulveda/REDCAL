@@ -18,14 +18,11 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
-import { FeatureServiciosComponent } from './servicios/feature-servicios/feature-servicios.component';
-import { FeatureCapacitacionComponent } from './capacitaciones/feature-capacitacion/feature-capacitacion.component';
 import { FeatureSomosComponent } from './quienes-somos/feature-somos/feature-somos.component';
 import { UploadServiceComponent } from './servicios/ui/upload-service/upload-service.component';
 import { FirebaseService } from './Services/firebase.service';
 import { AuthenticationService } from './Services/authentication.service';
 import { UploadCapacitacionComponent } from './capacitaciones/ui/upload-capacitacion/upload-capacitacion.component';
-import { NormativaComponent } from './normativa/normativa.component';
 import { ErrorMessageService } from './Services/error-message.service';
 import { InscribirComponent } from './capacitaciones/ui/inscribir/inscribir.component';
 import { ComitesComponent } from './comites/comites.component';
@@ -39,11 +36,9 @@ import { ComitesComponent } from './comites/comites.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    FeatureServiciosComponent,
     FeatureSomosComponent,
     UploadServiceComponent,
     UploadCapacitacionComponent,
-    NormativaComponent,
     InscribirComponent,
     ComitesComponent
   ],

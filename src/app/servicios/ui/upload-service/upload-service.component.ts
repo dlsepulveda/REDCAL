@@ -10,7 +10,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class UploadServiceComponent implements OnInit {
   formulario!: FormGroup;
   loading: boolean;
-  image:any
+  image: any;
   constructor(
     private FormBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public delegado: any
@@ -22,16 +22,30 @@ export class UploadServiceComponent implements OnInit {
     this.formulario = this.FormBuilder.group({
       title: ['', Validators.required],
       details: ['', Validators.required],
+      uid: [''],
     });
+
+    if (this.delegado.data) {
+      this.formulario.get('fecha')?.setValue(this.delegado.data.fecha);
+      this.formulario.get('title')?.setValue(this.delegado.data.title);
+      this.formulario.get('details')?.setValue(this.delegado.data.detail);
+      this.formulario.get('link')?.setValue(this.delegado.data.link);
+      this.formulario.get('fecha')?.setValue(this.delegado.data.fecha);
+      this.formulario.get('uid')?.setValue(this.delegado.data.uid);
+    }
   }
 
-  file(imagen:any){
-    this.image=imagen.target.files[0];
+  file(imagen: any) {
+    this.image = imagen.target.files[0];
   }
 
   submit() {
-    this.loading = true;
-    this.delegado(this.formulario.value, this.image);
+    if (this.delegado.data) {
+      this.delegado.aplicacion(this.formulario.value, this.image);
+    } else {
+      this.loading = true;
+      this.delegado(this.formulario.value, this.image);
+    }
   }
 
   getErrorMessage() {

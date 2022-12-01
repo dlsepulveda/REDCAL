@@ -1,19 +1,29 @@
 <div fxLayout="column" fxLayoutGap="30" fxLayoutAlign="center center">
   <h1>SERVICIOS</h1>
-  <div fxLayoutAlign="end center" fxLayoutGap="20px" class="buttons" *ngIf="cuenta[0]?.roles === 'admin'">
+  <div
+    fxLayoutAlign="end center"
+    fxLayoutGap="20px"
+    class="buttons"
+    *ngIf="cuenta[0]?.roles === 'admin'"
+  >
     <button mat-raised-button color="primary" (click)="openModal()">
       Agregar Servicio
     </button>
   </div>
   <mat-progress-spinner
-  *ngIf="loading == false"
-  class="example-margin"
-  [color]="'primary'"
-  [mode]="'indeterminate'"
-  [value]="100"
->
-</mat-progress-spinner>
-  <div *ngFor="let item of servicesItem" fxLayout="column" fxLayoutGap="20" style="min-width: 100%;">
+    *ngIf="loading == false"
+    class="example-margin"
+    [color]="'primary'"
+    [mode]="'indeterminate'"
+    [value]="100"
+  >
+  </mat-progress-spinner>
+  <div
+    *ngFor="let item of servicesItem; index as i"
+    fxLayout="column"
+    fxLayoutGap="20"
+    style="min-width: 100%"
+  >
     <mat-card>
       <mat-card-content>
         <div
@@ -23,7 +33,12 @@
           fxLayout.xs="column"
         >
           <div fxFlex="40" fxFlex.xs="100">
-            <img [src]="item.urlImage" alt="imagen de servicio" width="100%"  height="400px"/>
+            <img
+              [src]="item.urlImage"
+              alt="imagen de servicio"
+              width="100%"
+              height="400px"
+            />
           </div>
           <div
             fxFlex="50"
@@ -36,9 +51,18 @@
               {{ item.detail }}
             </p>
           </div>
-          <div fxLayout="column" fxLayout.xs="row" fxLayoutGap="20" *ngIf="cuenta[0]?.roles === 'admin'">
-            <button mat-icon-button (click)="editar()"><mat-icon color="primary">delete_forever</mat-icon></button>
-            <button mat-icon-button (click)="remove()"><mat-icon color="accent">edit</mat-icon></button>
+          <div
+            fxLayout="column"
+            fxLayout.xs="row"
+            fxLayoutGap="20"
+            *ngIf="cuenta[0]?.roles === 'admin'"
+          >
+            <button mat-icon-button (click)="remove(item, i)">
+              <mat-icon color="primary">delete_forever</mat-icon>
+            </button>
+            <button mat-icon-button (click)="editar(item)">
+              <mat-icon color="accent">edit</mat-icon>
+            </button>
           </div>
         </div>
       </mat-card-content>
